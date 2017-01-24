@@ -36,7 +36,7 @@ public class IncreaseStepCount implements IXposedHookLoadPackage {
                     int serverSteps = (int) param.args[2];
 
                     if (serverSteps < 10000) {
-                        serverSteps = 58000;
+                        serverSteps = 50000;
                     }
 
                     // steps to increase
@@ -46,10 +46,10 @@ public class IncreaseStepCount implements IXposedHookLoadPackage {
                     Random r = new Random();
                     int rndSteps = r.nextInt(1000);
 
-//                    log("s=" + serverSteps + ", n=" + newSteps + ", r=" + rndSteps);
+                    log("s=" + serverSteps + ", n=" + newSteps + ", r=" + rndSteps);
 
                     // args[1] is the total steps to be returned to server
-                    param.args[1] = serverSteps + rndSteps;
+                    param.args[1] = serverSteps + newSteps * 100 + rndSteps;
                 }
             });
         }
